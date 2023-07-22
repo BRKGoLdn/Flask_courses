@@ -4,15 +4,12 @@ app =  Flask(__name__)
 @app.route('/',methods=['GET','POST'])
 def index():
     if request.method == 'POST':
-        height= request.form.get('height')
+        length= request.form.get('length')
         width =  request.form.get('width')
-        if width and height:
-            alan= int(width) * int(height)
-            cevre= (int(width)*2)+(int(height)*2)
+        if width and length:
+            alan= int(width) * int(length)
+            cevre= 2*(int(width)+int(length))
             return render_template('cevre_alan.html',alanim=alan,cevrem=cevre)
-        else:
-            message= 'Lutfen yükseklik veya genişliki boş bırakmayın'
-            return render_template('cevre_alan.html', messagim= message)
     return render_template('cevre_alan.html')
 
 if __name__ == '__main__':
